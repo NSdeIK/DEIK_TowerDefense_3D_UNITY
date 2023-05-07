@@ -22,7 +22,8 @@ public class MenuSystem : MonoBehaviour
 
     public void NewGameWithHardDifficulty()
     {
-        //TODO - Nehéz scene
+        //TODO - Nehéz
+        //scene
         Debug.Log("Nehéz mód aktiválva");
     }
 

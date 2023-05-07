@@ -31,6 +31,7 @@ public class CameraMovement : MonoBehaviour
 
             Vector3 eulerRotation = transform.rotation.eulerAngles;
             transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+
         }
     }
 
