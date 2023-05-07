@@ -21,7 +21,9 @@ public class MapGenerator : MonoBehaviour
 
     public GameObject cameraObject;
 
-    public void GenerateMap()
+    private bool map = false;
+
+    public IEnumerator GenerateMap()
     {
         if(pathGenerator == null)
         {
@@ -29,9 +31,14 @@ public class MapGenerator : MonoBehaviour
             List<Vector2Int> result = PathGenerateWithParameters();
             if(result != null)
             {
-                StartCoroutine(StartInitMap(result));
+                yield return StartCoroutine(StartInitMap(result));
             }
         }
+    }
+
+    public bool mapIsDone()
+    {
+        return map;
     }
 
     private List<Vector2Int> PathGenerateWithParameters()
