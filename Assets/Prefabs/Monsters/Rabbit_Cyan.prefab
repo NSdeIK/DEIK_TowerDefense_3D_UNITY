@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 95000012440589267}
   m_Layer: 0
   m_Name: Rabbit_Cyan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  hp: 225
+  hp: 250
   speed: 28
-  dmg: 10
+  dmg: 12
 --- !u!1 &62334145655539535
 GameObject:
   m_ObjectHideFlags: 0

@@ -151,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretType: 0
   enemyTag: Enemy
-  range: 10
-  rangeRadius: 2
+  range: 0
+  rangeRadius: 13
   target: {fileID: 0}
   partToRotate: {fileID: 2175310367009695039}
   partToRotate_2: {fileID: 2175310364194668255}
@@ -162,6 +162,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4048817553548212726, guid: fd7287b52cd2a6145a9f016cc368ed36, type: 3}
   bulletShotPositions:
   - {fileID: 1682620938}
+  audioClip: {fileID: 8300000, guid: 8b3f676fe7b41044495a2964396b8ba3, type: 3}
 --- !u!1 &2179171832038286525
 GameObject:
   m_ObjectHideFlags: 0

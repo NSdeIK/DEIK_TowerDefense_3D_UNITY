@@ -268,7 +268,7 @@ MonoBehaviour:
   turretType: 2
   enemyTag: Enemy
   range: 0
-  rangeRadius: 2
+  rangeRadius: 15
   target: {fileID: 0}
   partToRotate: {fileID: 7109454528770967875}
   partToRotate_2: {fileID: 7109454523506172313}
@@ -279,6 +279,7 @@ MonoBehaviour:
   bulletShotPositions:
   - {fileID: 1038666899}
   - {fileID: 230521220}
+  audioClip: {fileID: 8300000, guid: 8524588a69a4f3e40bb597b6221138f1, type: 3}
 --- !u!1 &7107915262064580257
 GameObject:
   m_ObjectHideFlags: 0

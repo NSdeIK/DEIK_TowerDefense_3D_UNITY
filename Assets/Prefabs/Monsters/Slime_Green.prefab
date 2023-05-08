@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  hp: 120
+  hp: 160
   speed: 15
   dmg: 15
 --- !u!1 &9019475976324824056

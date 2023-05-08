@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 95000010677502877}
   m_Layer: 0
   m_Name: Ghost_White
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  hp: 60
+  hp: 70
   speed: 100
-  dmg: 5
+  dmg: 7
 --- !u!1 &5441604530380390456
 GameObject:
   m_ObjectHideFlags: 0

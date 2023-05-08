@@ -24,7 +24,6 @@ public class Wave
 
 public class WaveManager : MonoBehaviour
 {
-    public float difficultyFactor = 0.2f;
     public List<Wave> waves;
 
     public GameObject[] enemyPrefabs;

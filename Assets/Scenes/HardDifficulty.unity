@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13d9f08a92d6de4b9d6b3d401573cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerHP: 125
+  towerHP: 100
   loadingPanel: {fileID: 1324934693}
   turretsPanel: {fileID: 1469654480}
   gameOverPanel: {fileID: 781976676}
@@ -436,7 +436,7 @@ MonoBehaviour:
   coinsText: {fileID: 270152002}
   gameOverText: {fileID: 409322449}
   waveLevelButton: {fileID: 2092442789}
-  coins: 2000
+  coins: 1600
 --- !u!114 &73750942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,10 +449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff157cb39f9b7f54d9a7b0d20f494756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWidth: 30
-  gridHeight: 12
-  minPathLength: 50
-  groundRadiusRange: 2
+  gridWidth: 50
+  gridHeight: 10
+  minPathLength: 70
+  groundRadiusRange: 1
   baseGate: {fileID: 8742597660058837898, guid: 85ddf7aeeb2a45243bcbc9bbd2739122, type: 3}
   enemyGate: {fileID: 5423509628370818557}
   enemyPathGround: {fileID: 2554098833412011078, guid: e58a4597088382b4f8e76f9293b994df, type: 3}
@@ -488,35 +488,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - name: EasyWave#1
+  - name: HardWave#1
     parameters:
     - name: SlimeMonster
       enemyPrefabIndex: 00000000
-      spawnCount: 03000000
+      spawnCount: 04000000
       spawnDelayMin: 1
       spawnDelayMax: 3
-  - name: EasyWave#2
+  - name: HardWave#2
     parameters:
     - name: Slime+Rabbit
       enemyPrefabIndex: 0000000001000000
-      spawnCount: 0200000002000000
-      spawnDelayMin: 2
-      spawnDelayMax: 5
-  - name: EasyWave#3
+      spawnCount: 0300000003000000
+      spawnDelayMin: 3
+      spawnDelayMax: 7
+  - name: HardWave#3
     parameters:
     - name: Ghost
       enemyPrefabIndex: 02000000
-      spawnCount: 02000000
-      spawnDelayMin: 2
-      spawnDelayMax: 6
-  - name: EasyWave#4
+      spawnCount: 03000000
+      spawnDelayMin: 1
+      spawnDelayMax: 5
+  - name: HardWave#4
     parameters:
     - name: Bats
       enemyPrefabIndex: 03000000
-      spawnCount: 05000000
-      spawnDelayMin: 3
+      spawnCount: 06000000
+      spawnDelayMin: 4
       spawnDelayMax: 10
-  - name: EasyWave#Final
+  - name: HardWave#Final
     parameters:
     - name: Boss
       enemyPrefabIndex: 04000000

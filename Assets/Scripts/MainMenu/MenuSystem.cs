@@ -26,6 +26,7 @@ public class MenuSystem : MonoBehaviour
     {
         //TODO - Nehéz
         //scene
+        SceneManager.LoadScene(2);
         Debug.Log("Nehéz mód aktiválva");
     }
 
