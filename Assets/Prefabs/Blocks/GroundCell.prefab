@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8702992977626304485}
   - component: {fileID: 1557755132200674719}
   - component: {fileID: 6100950444728721101}
+  - component: {fileID: 6508648213375346408}
   m_Layer: 0
   m_Name: GroundCell
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5786546902869012844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.789146, y: 119.029236, z: 16.575838}
-  m_LocalScale: {x: 10, y: 2, z: 10}
+  m_LocalScale: {x: 10, y: 3, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,3 +99,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &6508648213375346408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786546902869012844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8102075276c6ade41a20fb60278e457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

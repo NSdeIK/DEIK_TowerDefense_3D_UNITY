@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject loadingPanel;
+    public GameObject turretsPanel;
 
     private GameObject cameraObj;
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     private void startGame()
     {
         loadingPanel.SetActive(false);
+        turretsPanel.SetActive(true);
         cameraObj.GetComponent<CameraMovement>().enabled = true;
     }
 

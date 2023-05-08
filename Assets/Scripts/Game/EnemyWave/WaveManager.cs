@@ -66,6 +66,7 @@ public class WaveManager : MonoBehaviour
                         if(enemyPrefabs.Length > temp && enemyPrefabs[temp] != null)
                         {
                             GameObject enemyPrefab = Instantiate(enemyPrefabs[temp], new Vector3(spawnPoint.position.x, 2.5f, spawnPoint.position.z), spawnPoint.rotation);
+
                             yield return new WaitForSeconds(spawnDelay);
                         }
                     }
