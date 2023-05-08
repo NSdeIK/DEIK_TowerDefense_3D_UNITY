@@ -28,27 +28,13 @@ public class WaveManager : MonoBehaviour
     public List<Wave> waves;
 
     public GameObject[] enemyPrefabs;
-    public int waveLevel = 0;
 
     private Transform spawnPoint;
     private List<Vector2Int> pathCells;
 
-
-    public bool nextWave = true;
-
-    void Update()
-    {
-        if(spawnPoint != null)
-        {
-            if (nextWave)
-            {
-                Debug.Log("WaveManager - Kovetkezo wave feldolgozasa");
-                StartCoroutine(spawnEnemy());
-                waveLevel++;
-                nextWave = false;
-            }
-        }
-    }
+    private int waveLevel = 0;
+    private bool nextWave = false;
+    private int allEnemyCount = 0;
 
     IEnumerator spawnEnemy()
     {
@@ -58,6 +44,7 @@ public class WaveManager : MonoBehaviour
             if(enemy.spawnCount.Length > 0 && enemy.enemyPrefabIndex.Length > 0)
             {
                 int temp = 0;
+                allEnemyCount = enemy.spawnCount.Sum(x => x);
                 foreach(int enemyCount in enemy.spawnCount)
                 {
                     for(int i = 0; i < enemyCount; i++)
@@ -66,7 +53,6 @@ public class WaveManager : MonoBehaviour
                         if(enemyPrefabs.Length > temp && enemyPrefabs[temp] != null)
                         {
                             GameObject enemyPrefab = Instantiate(enemyPrefabs[temp], new Vector3(spawnPoint.position.x, 2.5f, spawnPoint.position.z), spawnPoint.rotation);
-
                             yield return new WaitForSeconds(spawnDelay);
                         }
                     }
@@ -75,6 +61,20 @@ public class WaveManager : MonoBehaviour
             }
         }
         yield return null;
+    }
+
+    private void nextWaveLevel()
+    {
+        if (spawnPoint != null)
+        {
+            if (nextWave)
+            {
+                Debug.Log("WaveManager - Kovetkezo wave feldolgozasa");
+                StartCoroutine(spawnEnemy());
+                waveLevel++;
+                nextWave = false;
+            }
+        }
     }
 
     public void SetPathCells(List<Vector2Int> pathCells)
@@ -92,12 +92,31 @@ public class WaveManager : MonoBehaviour
     public void getNextWave()
     {
         Debug.Log("WaveManager - Kovetkezo wave lekerese");
-        this.nextWave = true;
+        if(waveLevel != waves.Count)
+        {
+            this.nextWave = true;
+            nextWaveLevel();
+        }
+    }
+
+    public int getWaveLevel()
+    {
+        return this.waveLevel;
+    }
+
+    public int getMaxWaveLevel()
+    {
+        return this.waves.Count;
     }
 
     public List<Vector2Int> getEnemyPathCells()
     {
         //Debug.Log("WaveManager - Cellak lekerese");
         return pathCells;
+    }
+
+    public int GetAllEnemyCount()
+    {
+        return allEnemyCount;
     }
 }

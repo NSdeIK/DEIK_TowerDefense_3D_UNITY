@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 120
   hitEffect: {fileID: 1000012909287652, guid: abb9f519b142e304d9c45b56afa768bc, type: 3}
+  dmg: 2.25
 --- !u!135 &6920627042771170292
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4665ca1d4bc944aafed7748d08ccc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 45
+  speed: 60
   hitEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+  dmg: 35
 --- !u!135 &8182416872096574409
 SphereCollider:
   m_ObjectHideFlags: 0

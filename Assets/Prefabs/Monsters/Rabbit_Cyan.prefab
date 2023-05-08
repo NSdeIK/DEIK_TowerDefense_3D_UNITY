@@ -130,9 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc31e2c3421f1954d91759f65265b9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextPathCellIndex: 0
   canMove: 1
-  pathCells: []
+  hp: 225
+  speed: 28
+  dmg: 10
 --- !u!1 &62334145655539535
 GameObject:
   m_ObjectHideFlags: 0

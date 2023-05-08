@@ -442,7 +442,7 @@ MonoBehaviour:
   partToRotate_2: {fileID: 7905607120689360497}
   rotateSpeed: 10
   fireRate: 1
-  fireSpeed: 1
+  fireSpeed: 0.65
   bulletPrefab: {fileID: 8182416870844443623, guid: e997483c5a44bad4681b6ed6b869f79c, type: 3}
   bulletShotPositions:
   - {fileID: 990370356}

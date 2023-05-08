@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemySettings : MonoBehaviour
 {
     private WaveManager waveManager;
-    public int nextPathCellIndex;
+    private GameManager gameManager;
+    private List<Vector2Int> pathCells;
+    private int nextPathCellIndex;
+
     public bool canMove = true;
-    public List<Vector2Int> pathCells;
+    public float hp;
+    public float speed;
+    public float dmg;
 
     void Start()
     {
         waveManager = GameObject.Find("GameManager").GetComponent<WaveManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         if(waveManager?.getEnemyPathCells() != null)
         {
             pathCells = waveManager.getEnemyPathCells();
@@ -30,8 +38,13 @@ public class EnemySettings : MonoBehaviour
                 Vector3 nextPos = new Vector3(pathCells[nextPathCellIndex].y * 10, gameObject.transform.position.y, pathCells[nextPathCellIndex].x * 10);
                 Vector3 dir = nextPos - transform.position;
 
-                transform.position = Vector3.MoveTowards(currentPos, nextPos, Time.deltaTime * 10f);
-                transform.forward = dir;
+                transform.position = Vector3.MoveTowards(currentPos, nextPos, Time.deltaTime * speed);
+
+                if(dir != Vector3.zero)
+                {
+                    transform.forward = dir;
+                }
+
 
                 if (Vector3.Distance(currentPos,nextPos) < 0.1f)
                 {
@@ -42,12 +55,28 @@ public class EnemySettings : MonoBehaviour
                     else
                     {
                         Destroy(gameObject);
+                        gameManager?.AddEnemyDestroyed();
+                        gameManager?.EnemyAttackedTower(dmg);
                         //tower hp
                     }
                 }
             }
         }
 
+    }
+
+    public bool AttackedTurret(float dmg)
+    {
+        hp -= dmg;
+
+        if (hp < 1)
+        {
+            Destroy(gameObject);
+            gameManager?.AddEnemyDestroyed();
+            return true;
+        }
+
+        return false;
     }
 
     public void SetCanMove()

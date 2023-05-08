@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     private Transform target;
     public GameObject hitEffect;
+    public float dmg;
 
     public void SetTarget(Transform target)
     {
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour
 
         if (dir.magnitude <= 1f)
         {
-            HitTarget();
+            HitTarget(target);
             return;
         }
 
@@ -38,10 +39,21 @@ public class Bullet : MonoBehaviour
 
     }
 
-    void HitTarget()
+    void HitTarget(Transform lastTarget)
     {
         GameObject effect = Instantiate(hitEffect, transform.position, transform.rotation);
         Destroy(effect, 2f);
         Destroy(gameObject);
+
+        if(lastTarget != null)
+        {
+            var enemy = lastTarget.gameObject.GetComponent<EnemySettings>();
+
+            if (enemy?.AttackedTurret(dmg) == true)
+            {
+                target = null;
+            };
+        }
+
     }
 }
