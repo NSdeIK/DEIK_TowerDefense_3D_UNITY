@@ -35,9 +35,15 @@ public class TurretSystem : MonoBehaviour
     public Transform[] bulletShotPositions;
     private float fireCountdown = 0f;
 
+    private Animator animator;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         range = transform.localPosition.y * rangeRadius;
+        audioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -83,9 +89,16 @@ public class TurretSystem : MonoBehaviour
         partToRotate_2.rotation = Quaternion.Slerp(partToRotate_2.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         partToRotate_2.rotation = Quaternion.Euler(new Vector3(partToRotate_2.rotation.eulerAngles.x, partToRotate_2.rotation.eulerAngles.y, partToRotate_2.rotation.eulerAngles.z));
 
-        Debug.Log(fireCountdown);
         if (fireCountdown <= 0f)
         {
+
+            if(audioSource != null && audioClip != null)
+            {
+                audioSource.clip = audioClip;
+                audioSource.Play();
+            }
+
+            animator.SetTrigger("Shoot");
             if (turretType == TurretTypes.ALAP)
             {
                 DefaultShot();

@@ -521,7 +521,7 @@ Animator:
   m_GameObject: {fileID: 9019475976159229208}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e607f74860c67814e93c914b710142d5, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2afb039dcd1a79d42bd4415b800e4f2b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   hp: 120
-  speed: 25
+  speed: 15
   dmg: 15
 --- !u!1 &9019475976324824056
 GameObject:
