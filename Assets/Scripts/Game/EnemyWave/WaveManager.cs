@@ -89,14 +89,17 @@ public class WaveManager : MonoBehaviour
         spawnPoint = EnemyBeginCell;
     }
 
-    public void getNextWave()
+    public bool getNextWave()
     {
         Debug.Log("WaveManager - Kovetkezo wave lekerese");
         if(waveLevel != waves.Count)
         {
             this.nextWave = true;
             nextWaveLevel();
+            return true;
         }
+
+        return false;
     }
 
     public int getWaveLevel()

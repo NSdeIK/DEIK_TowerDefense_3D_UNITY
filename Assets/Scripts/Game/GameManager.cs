@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject loadingPanel;
     public GameObject turretsPanel;
-    public GameObject gameInfoPanel;
+    public GameObject gameOverPanel;
 
     public TextMeshProUGUI towerHPText;
     public TextMeshProUGUI waveLevelText;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI gameOverText;
     public GameObject waveLevelButton;
 
     private GameObject cameraObj;
@@ -81,26 +82,38 @@ public class GameManager : MonoBehaviour
 
         if (towerHP <= 1)
         {
-            //TODO - GAME OVER!
+            disableGameInfo();
+            gameOverText.SetText("Game Over! :(");
+            gameOverPanel.SetActive(true);
         }
     }
 
     public void ReadyNextWave()
     {
-        if(checkWaveEnemies != null)
+        if (waveManager.getNextWave())
         {
-            StopCoroutine(checkWaveEnemies);
+
+            if (checkWaveEnemies != null)
+            {
+                StopCoroutine(checkWaveEnemies);
+            }
+
+            destroyedEnemy = 0;
+
+            waveLevelButton.gameObject.SetActive(false);
+
+            waveLevelText.SetText("Wave: " + waveManager.getWaveLevel() + "/" + waveManager.getMaxWaveLevel());
+            checkWaveEnemies = checkAllEnemy();
+
+            StartCoroutine(checkWaveEnemies);
         }
-
-        destroyedEnemy = 0;
-
-        waveManager.getNextWave();
-        waveLevelButton.gameObject.SetActive(false);
-
-        waveLevelText.SetText("Wave: " + waveManager.getWaveLevel() + "/" + waveManager.getMaxWaveLevel());
-        checkWaveEnemies = checkAllEnemy();
-       
-        StartCoroutine(checkWaveEnemies);
+        else
+        {
+            disableGameInfo();
+            waveLevelButton.gameObject.SetActive(false);
+            gameOverText.SetText("Game over! [Won] :)");
+            gameOverPanel.SetActive(true);
+        }
     }
 
     private void ShowReadyButton()
