@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -70,9 +71,10 @@ public class GameManager : MonoBehaviour
 
     private void disableGameInfo()
     {
-        towerHPText.enabled = false;
-        waveLevelText.enabled = false;
-        coinsText.enabled = false;
+        turretsPanel.SetActive(false);
+        towerHPText.gameObject.SetActive(false);
+        waveLevelText.gameObject.SetActive(false);
+        coinsText.gameObject.SetActive(false);
     }
 
     public void EnemyAttackedTower(float enemyDmg)
@@ -82,9 +84,7 @@ public class GameManager : MonoBehaviour
 
         if (towerHP <= 1)
         {
-            disableGameInfo();
-            gameOverText.SetText("Game Over! :(");
-            gameOverPanel.SetActive(true);
+            GameOver("Game Over! :(");
         }
     }
 
@@ -107,13 +107,14 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(checkWaveEnemies);
         }
-        else
-        {
-            disableGameInfo();
-            waveLevelButton.gameObject.SetActive(false);
-            gameOverText.SetText("Game over! [Won] :)");
-            gameOverPanel.SetActive(true);
-        }
+    }
+
+    private void GameOver(string text)
+    {
+        waveLevelButton.gameObject.SetActive(false);
+        disableGameInfo();
+        gameOverText.SetText(text);
+        gameOverPanel.SetActive(true);
     }
 
     private void ShowReadyButton()
@@ -154,7 +155,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("[Destroyed]: " + destroyedEnemy + " [AllEnemy]: " + waveManager?.GetAllEnemyCount());
             if(destroyedEnemy == waveManager?.GetAllEnemyCount())
             {
-                ShowReadyButton();
+                if(waveManager?.getMaxWaveLevel() == waveManager?.getWaveLevel())
+                {
+                    GameOver("Game Over! :)");
+                }
+                else
+                {
+                    if(towerHP > 0)
+                    {
+                        ShowReadyButton();
+                    }  
+                }
+
                 break;
             }
 
@@ -162,6 +174,11 @@ public class GameManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void Update()

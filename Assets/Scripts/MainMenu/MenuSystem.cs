@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class MenuSystem : MonoBehaviour
     public void NewGameWithEasyDifficulty()
     {
         //TODO - Könnyû scene
+        SceneManager.LoadScene(1);
         Debug.Log("Könnyû mód aktiválva");
     }
 
