@@ -73,6 +73,7 @@ public class EnemySettings : MonoBehaviour
         {
             Destroy(gameObject);
             gameManager?.AddEnemyDestroyed();
+            gameManager?.AddCoins(Random.Range(50,100));
             return true;
         }
 

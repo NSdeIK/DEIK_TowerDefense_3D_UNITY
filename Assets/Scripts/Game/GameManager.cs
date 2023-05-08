@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         coinsText.gameObject.SetActive(true);
 
         towerHPText.SetText(this.towerHPText.text + " " + towerHP);
-        coinsText.SetText(this.coinsText.text + " " + coins);
+        coinsText.SetText("Coins: " + coins);
     }
 
     private void disableGameInfo()
@@ -111,6 +111,26 @@ public class GameManager : MonoBehaviour
     public void AddEnemyDestroyed()
     {
         destroyedEnemy++;
+    }
+
+    public void AddCoins(int randomCoins)
+    {
+        coins+=randomCoins;
+        coinsText.SetText("Coins: " + coins);
+    }
+
+    public int GetCoins()
+    {
+        return coins;
+    }
+
+    public void minusCoins(int price)
+    {
+        if(coins > 0)
+        {
+            coins -= price;
+            coinsText.SetText("Coins: " + coins);
+        }
     }
 
     IEnumerator checkAllEnemy()
