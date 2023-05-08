@@ -21,7 +21,8 @@ public class MapGenerator : MonoBehaviour
 
     public GameObject cameraObject;
 
-    private bool map = false;
+    private List<Vector2Int> finalPathCells;
+    private GameObject enemyBase;
 
     public IEnumerator GenerateMap()
     {
@@ -34,11 +35,6 @@ public class MapGenerator : MonoBehaviour
                 yield return StartCoroutine(StartInitMap(result));
             }
         }
-    }
-
-    public bool mapIsDone()
-    {
-        return map;
     }
 
     private List<Vector2Int> PathGenerateWithParameters()
@@ -68,6 +64,7 @@ public class MapGenerator : MonoBehaviour
 
     IEnumerator StartInitMap(List<Vector2Int> pathCells)
     {
+        finalPathCells = pathCells;
         yield return InitPathCells(pathCells);
         yield return InitGroundCells();
     }
@@ -97,6 +94,7 @@ public class MapGenerator : MonoBehaviour
                         cell.x * 10 - (enemyGate.transform.localScale.z / 2f + enemyGate.transform.localScale.x / 2f)
                     ),
                     baseGate.transform.rotation);
+                enemyBase = clonedObject;
             }
             else
             {
@@ -128,6 +126,16 @@ public class MapGenerator : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    public List<Vector2Int> getPathCells()
+    {
+        return finalPathCells;
+    }
+
+    public GameObject getEnemyBaseObject()
+    {
+        return enemyBase;
     }
 
     private bool CheckNearEnemyPath(int x, int y)
