@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 [System.Serializable]
@@ -42,21 +43,25 @@ public class WaveManager : MonoBehaviour
         {
             if(enemy.spawnCount.Length > 0 && enemy.enemyPrefabIndex.Length > 0)
             {
-                int temp = 0;
                 allEnemyCount = enemy.spawnCount.Sum(x => x);
-                foreach(int enemyCount in enemy.spawnCount)
+                int temp = 0;
+                foreach (int enemyIndex in enemy.enemyPrefabIndex)
                 {
-                    for(int i = 0; i < enemyCount; i++)
+                    int enemyCount = enemy.spawnCount[temp];
+
+                    for (int i = 0; i < enemyCount; i++)
                     {
                         int spawnDelay = Random.Range(enemy.spawnDelayMin, enemy.spawnDelayMax);
-                        if(enemyPrefabs.Length > temp && enemyPrefabs[temp] != null)
+                        if (enemyPrefabs.Length > temp && enemyPrefabs[enemyIndex] != null)
                         {
-                            GameObject enemyPrefab = Instantiate(enemyPrefabs[temp], new Vector3(spawnPoint.position.x, 2.5f, spawnPoint.position.z), spawnPoint.rotation);
+                            GameObject enemyPrefab = Instantiate(enemyPrefabs[enemyIndex], new Vector3(spawnPoint.position.x, 2.5f, spawnPoint.position.z), spawnPoint.rotation);
                             yield return new WaitForSeconds(spawnDelay);
                         }
                     }
+
                     temp++;
                 }
+
             }
         }
         yield return null;

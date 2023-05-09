@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         loadingPanel.SetActive(false);
         turretsPanel.SetActive(true);
         towerHPText.gameObject.SetActive(true);
-        waveLevelText.gameObject.SetActive(true);
+        waveLevelButton.gameObject.SetActive(true);
         coinsText.gameObject.SetActive(true);
 
         towerHPText.SetText(this.towerHPText.text + " " + towerHP);
@@ -100,9 +100,10 @@ public class GameManager : MonoBehaviour
 
             destroyedEnemy = 0;
 
+            waveLevelText.gameObject.SetActive(true);
             waveLevelButton.gameObject.SetActive(false);
-
             waveLevelText.SetText("Wave: " + waveManager.getWaveLevel() + "/" + waveManager.getMaxWaveLevel());
+
             checkWaveEnemies = checkAllEnemy();
 
             StartCoroutine(checkWaveEnemies);
@@ -115,10 +116,12 @@ public class GameManager : MonoBehaviour
         disableGameInfo();
         gameOverText.SetText(text);
         gameOverPanel.SetActive(true);
+        cameraObj.GetComponent<CameraMovement>().enabled = false;
     }
 
     private void ShowReadyButton()
     {
+        waveLevelText.gameObject.SetActive(false);
         waveLevelButton.gameObject.SetActive(true);
     } 
 
@@ -151,7 +154,6 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Ellenorzes");
             Debug.Log("[Destroyed]: " + destroyedEnemy + " [AllEnemy]: " + waveManager?.GetAllEnemyCount());
             if(destroyedEnemy == waveManager?.GetAllEnemyCount())
             {

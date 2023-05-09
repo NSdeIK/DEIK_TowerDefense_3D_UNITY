@@ -15,6 +15,9 @@ public class EnemySettings : MonoBehaviour
     public float speed;
     public float dmg;
 
+    public bool died = false;
+
+
     void Start()
     {
         waveManager = GameObject.Find("GameManager").GetComponent<WaveManager>();
@@ -54,10 +57,14 @@ public class EnemySettings : MonoBehaviour
                     }
                     else
                     {
-                        Destroy(gameObject);
-                        gameManager?.AddEnemyDestroyed();
-                        gameManager?.EnemyAttackedTower(dmg);
-                        //tower hp
+                        if (!died)
+                        {
+                            died = true;
+                            Destroy(gameObject);
+                            gameManager?.AddEnemyDestroyed();
+                            gameManager?.EnemyAttackedTower(dmg);
+                        }
+
                     }
                 }
             }
@@ -69,8 +76,9 @@ public class EnemySettings : MonoBehaviour
     {
         hp -= dmg;
 
-        if (hp < 1)
+        if (hp < 1 && !died)
         {
+            died = true;
             Destroy(gameObject);
             gameManager?.AddEnemyDestroyed();
             gameManager?.AddCoins(Random.Range(50,100));
